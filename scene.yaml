@@ -50,7 +50,7 @@ layers:
         offset: [4, 0]
         priority: 3
         font:
-          family: serif
+          family: ["Hiragino Mincho ProN", serif]
           size: [[14, 12pt], [16, 12pt], [17, 40pt], [18, 32pt]]
           weight: bolder
           fill: white
