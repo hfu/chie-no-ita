@@ -1,6 +1,9 @@
 scene:
   background:
    color: '#222'
+#cameras:
+  #camera1:
+    #type: perspective
 sources:
   ort:
     type: Raster
@@ -77,6 +80,15 @@ layers:
           color: '#f72'
           cap: 'butt'
           width: "function() {return feature.type == '堅ろう建物'? 1 : 0.2;}"
+          #extrude: 50
+        text:
+          text_source: "function() {return ($zoom < 21) ? '' : feature.fid;}"
+          order: 100
+          offset: [0, 16]
+          font:
+            family: monospace
+            size: 10pt
+            fill: '#f72'
     roadedge:
       filter:
         class: RdEdg
@@ -111,11 +123,11 @@ layers:
           color: '#00f'
     adminboundary:
       filter:
-        class: AdmBdry
+        class: [AdmBdry, CommBdry]
       draw:
         lines:
           order: 6
-          width: 3px
+          width: 1px
           color: '#f77'
     contours:
       filter:
