@@ -1,0 +1,134 @@
+scene:
+  background:
+   color: '#222'
+sources:
+  ort:
+    type: Raster
+    url: //cyberjapandata.gsi.go.jp/xyz/ort/{z}/{x}/{y}.jpg
+  rdcl:
+    type: GeoJSON
+    url: //cyberjapandata.gsi.go.jp/xyz/experimental_rdcl/{z}/{x}/{y}.geojson
+    max_zoom: 16
+    min_zoom: 16
+  anno:
+    type: GeoJSON
+    url: //cyberjapandata.gsi.go.jp/xyz/experimental_anno/{z}/{x}/{y}.geojson
+    min_zoom: 15
+    max_zoom: 15
+  fgd:
+    type: GeoJSON
+    url: //cyberjapandata.gsi.go.jp/xyz/experimental_fgd/{z}/{x}/{y}.geojson
+    min_zoom: 18
+    max_zoom: 18
+layers:
+  ort:
+    data: {source: ort}
+    draw:
+      raster:
+        color: [0.3, 0.3, 0.3]
+        order: 0
+  rdcl:
+    data: {source: rdcl}
+    draw:
+      lines:
+        order: 4
+        color: [[15, gray], [17, gray], [18, gray]]
+        width: [[15, 3px], [17, 3px], [18, 1px]]
+      path:
+        filter: {type: 庭園路}
+        draw:
+          lines:
+            color: orange
+            width: 1px
+  anno:
+    data: {source: anno}
+    draw:
+      text:
+        anchor: right
+        order: 10
+        text_source: knj #kana
+        offset: [4, 0]
+        priority: 3
+        font:
+          family: serif
+          size: [[14, 12pt], [16, 12pt], [17, 40pt], [18, 32pt]]
+          weight: bolder
+          fill: white
+  fgd:
+    data: {source: fgd}
+    draw:
+      lines:
+        order: 5
+        color: orange # default color
+        width: 2px
+    railcl:
+      filter:
+        class: RailCL
+      draw:
+        lines:
+          order: 7
+          color: '#7f7'
+    buildings:
+      filter:
+        class: BldL
+      draw:
+        lines:
+          order: 7
+          color: '#f72'
+          cap: 'butt'
+          width: "function() {return feature.type == '堅ろう建物'? 1 : 0.2;}"
+    roadedge:
+      filter:
+        class: RdEdg
+      draw:
+        lines:
+          order: 6
+          color: white
+          width: 1px
+    roadCompt:
+      filter:
+        class: RdCompt
+      draw:
+        lines:
+          order: 7
+          width: 1px
+          color: '#aaa'
+    waterline:
+      filter:
+        class: WL
+      draw:
+        lines:
+          order: 6
+          width: 1px
+          color: '#00f'
+    coastline:
+      filter:
+        class: Cstline
+      draw:
+        lines:
+          order: 6
+          width: 2px
+          color: '#00f'
+    adminboundary:
+      filter:
+        class: AdmBdry
+      draw:
+        lines:
+          order: 6
+          width: 3px
+          color: '#f77'
+    contours:
+      filter:
+        class: Cntr
+      draw:
+        lines:
+          order: 4
+          color: '#c8a03c'
+        text:
+          text_source: alti
+          order: 10
+          offset: [0, 5]
+          font:
+            family: monospace
+            size: 12pt
+            fill: '#c8a03c'
