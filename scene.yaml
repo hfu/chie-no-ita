@@ -46,7 +46,7 @@ layers:
       text:
         anchor: right
         order: 10
-        text_source: knj #kana
+        text_source: function() {if(feature.arrng == 2) {var s = ""; for(var i = 0; i < feature.knj.length; i++) s = s + feature.knj.charAt(i) + "\n"; return s;} else {return feature.knj;}}
         offset: [4, 0]
         priority: 3
         font:
