@@ -41,10 +41,12 @@ map = (function () {
     layer.on('init', function() {});
     layer.addTo(map);
   });
+
   return map;
 }());
 
 window.addEventListener("hashchange",function(){parent.postMessage(window.location.hash, "*")});
+
 </script>
 </body>
 </html>

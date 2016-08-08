@@ -37,12 +37,12 @@ layers:
         order: 4
         color: [[15, gray], [17, gray], [18, gray]]
         width: [[15, 3px], [17, 3px], [18, 1px]]
-      path:
-        filter: {type: 庭園路}
-        draw:
-          lines:
-            color: orange
-            width: 1px
+      #path:
+        #filter: {type: 庭園路}
+        #draw:
+          #lines:
+            #color: orange
+            #width: 1px
   anno:
     data: {source: anno}
     draw:
@@ -71,7 +71,7 @@ layers:
         lines:
           order: 7
           color: '#7f7'
-    buildings:
+    bldl:
       filter:
         class: BldL
       draw:
@@ -82,14 +82,14 @@ layers:
           width: "function() {return feature.type == '堅ろう建物'? 1 : 0.2;}"
           #extrude: 50
         text:
-          text_source: "function() {return ($zoom < 21) ? '' : feature.fid;}"
+          text_source: "function() {var s = {'50373-13494-s-816': '麟閣', '50373-13494-s-1332': '天守閣'}[feature.fid]; return ($zoom < 20) ? '' : ((s ? s : '')  + ' ' + feature.fid);}"
           order: 100
           offset: [0, 16]
           font:
             family: monospace
             size: 10pt
             fill: '#f72'
-    roadedge:
+    rdedg:
       filter:
         class: RdEdg
       draw:
@@ -97,7 +97,7 @@ layers:
           order: 6
           color: white
           width: 1px
-    roadCompt:
+    rdcompt:
       filter:
         class: RdCompt
       draw:
@@ -105,7 +105,7 @@ layers:
           order: 7
           width: 1px
           color: '#aaa'
-    waterline:
+    wl:
       filter:
         class: WL
       draw:
@@ -113,7 +113,7 @@ layers:
           order: 6
           width: 1px
           color: '#00f'
-    coastline:
+    cstline:
       filter:
         class: Cstline
       draw:
@@ -121,7 +121,7 @@ layers:
           order: 6
           width: 2px
           color: '#00f'
-    adminboundary:
+    bdry:
       filter:
         class: [AdmBdry, CommBdry]
       draw:
@@ -129,7 +129,7 @@ layers:
           order: 6
           width: 1px
           color: '#f77'
-    contours:
+    cntr:
       filter:
         class: Cntr
       draw:
