@@ -26,7 +26,12 @@ map = (function () {
   }
   var map = L.map('map', {"keyboardZoomOffset" : .05, zoomControl: false});
   var layer = Tangram.leafletLayer({
-    scene: 'scene.yaml', attribution: 'GSI'
+    scene: 'scene.yaml', attribution: 'GSI',
+    //introspection: true,
+    //events: {
+      //hover: function(selection) {console.log('Hover!', selection);},
+      //click: function(selection) {console.log('Click!', selection);}
+    //}
   });
 
   window.layer = layer;

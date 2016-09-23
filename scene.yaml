@@ -82,6 +82,7 @@ layers:
           width: "function() {return feature.type == '堅ろう建物'? 1 : 0.2;}"
           #extrude: 50
         text:
+          interactive: true
           text_source: "function() {var s = {'50373-13494-s-816': '麟閣', '50373-13494-s-1332': '天守閣'}[feature.fid]; return ($zoom < 20) ? '' : ((s ? s : '')  + ' ' + feature.fid);}"
           order: 100
           offset: [0, 16]
